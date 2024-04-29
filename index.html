@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      height: 100%;
+      background-image: url("img2.jpg");
+      background-position: fixed;
+      background-repeat: no-repeat ;
+      background-size: cover;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .navbar {
+      background-color: #333;
+      border-color: #000;
+    }
+    .navbar-brand {
+      color: #fff;
+    }
+    .navbar-nav > li > a {
+      color: #fff;
+    }
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus {
+      background-color: #555;
+    }
+    .container {
+      color: #000;
+    }
+    @keyframes slide {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    .animate-slide {
+      animation: slide 3s ease;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="weather.html">WEATHER</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="Form.html">Form</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container animate-slide">
+  <center>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h2><b><blink>WEATHER REPORT</blink></b></h2>
+    <h5><b>“Save nature and Save life”</b></h5>
+  </center>
+  <marquee>
+    <br><br><summary>\\\ Life is Full of Nature and Save Tree ///</summary>
+  </marquee>
+</div>
+</body>
+</html>

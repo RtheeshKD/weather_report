@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App Feedback</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url('img7.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-top: 50px; 
+        }
+
+        #feedback-form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: rgba(157, 139, 139, 0.7); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgb(227, 228, 219);
+        }
+
+        .form-group {
+            margin-bottom: 20px;   
+        }
+
+        .btn-secondary {
+            background-color: rgb(206, 192, 114);
+            border: none;
+        }
+
+        h3 {
+            background-color: rgb(206, 192, 114);
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            animation: shake 0.1s infinite alternate; /* Add animation */
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(10px); }
+        }
+
+        label {
+            color: white;
+        }
+
+        /* Custom styling for inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="rating"],
+        input[type="feedback"]
+        textarea {
+            background-color: rgb(178, 196, 196);
+            color: rgb(175, 34, 34);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="container-fluid">
+          <a style="color: black;" "navbar-brand" href="#">WEATHER</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+               
+                  
+                  <li class="nav-item">
+                    <a style="background-color: rgb(236, 225, 225);" "nav-link" href="index.html">Back to home</a>
+                  
+             
+        </div>
+      </nav>
+<div id="feedback-form" class="container">
+    <h3>Weather Feedback Form</h3>
+    <form id="weather-feedback-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone" name="phone">
+        </div>
+       
+
+
+        <div class="form-group">
+            <label for="rating">Rating:</label>
+            <select class="form-control" id="rating" name="rating">
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Very Good</option>
+                <option value="3">3 - Good</option>
+                <option value="2">2 - Fair</option>
+                <option value="1">1 - Poor</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <textarea class="form-control" id="feedback" name="feedback"></textarea>
+        </div>
+
+        <button type="button" class="btn btn-secondary" onclick="validateForm()">Submit Feedback</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var phone = $("#phone").val();
+        var rating = $("#rating").val();
+        var feedback = $("#feedback").val();
+
+        // Simple validation
+        if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || rating.trim() === '' || feedback.trim() === '') {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Additional validation
+        if (!isValidEmail(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        if (!isValidPhoneNumber(phone)) {
+            alert('Please enter a valid phone number');
+            return;
+        }
+        alert('Feedback submitted successfully!');
+
+       window.location.href = 'success.html';
+       
+    }
+
+    function isValidEmail(email) {
+        
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function isValidPhoneNumber(phone) {
+        
+        var phoneRegex = /^(\d{10}|\d{3}[-\s]\d{3}[-\s]\d{4}|\(\d{3}\)[-\s]\d{3}[-\s]\d{4})$/;
+        return phoneRegex.test(phone);
+    }
+</script>
+
+</body>
+</html>

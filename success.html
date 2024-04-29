@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Successful</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+        body {
+            background: rgba(226, 218, 218, 0.89) url('back2.jpg') center center fixed;
+            background-size: cover;
+            background-blend-mode: color-burn;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .success-icon {
+      font-size: 5rem;
+      color: #28a745;
+      margin-bottom: 1rem;
+      animation: shake 0.5s infinite alternate;
+    }
+    .success-message {
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+    .back-button {
+      margin-top: 1rem;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i> 
+    </div>
+    <div class="success-message">
+      <br><br> <p>Thanks for your feedback</p>
+    </div>
+    <a href= "index.html" class="btn btn-primary back-button">Submit Another Response</a>
+  </div>
+
+  <script>
+    // Your jQuery code can go here
+  </script>
+</body>
+</html>

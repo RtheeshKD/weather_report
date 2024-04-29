@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('back1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .confirmation {
+            margin-top: 20px;
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            color: #3c763d;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .error {
+            color: #d9534f;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .icon {
+            position: relative;
+            top: 6px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div ng-app="contactFormApp" ng-controller="ContactFormController" class="container">
+    <h2>Weather Form</h2>
+    <form ng-submit="submitForm()" name="contactForm" novalidate>
+        <p>Name: <input type="text" ng-model="formData.name" placeholder="Enter your name" required></p>
+        <div class="error" ng-show="contactForm.name.$error.required && contactForm.name.$dirty">
+            <i class="fas fa-exclamation-circle icon"></i> Name is required
+        </div>
+        <p>Email: <input type="email" ng-model="formData.email" placeholder="Enter your email" required></p>
+        <div class="error" ng-show="contactForm.email.$error.required && contactForm.email.$dirty">
+            <i class="fas fa-exclamation-circle icon"></i> Email is required
+        </div>
+        <div class="error" ng-show="contactForm.email.$error.email && contactForm.email.$dirty">
+            <i class="fas fa-exclamation-circle icon"></i> Please enter a valid email address
+        </div>
+        <div>
+            <label for="season">Season *</label><br>
+            <select id="season" name="season" ng-model="formData.season" required>
+                <option value="">Select Season</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="autumn">Autumn</option>
+                <option value="winter">Winter</option>
+            </select>
+            <span class="error" ng-show="registrationForm.season.$dirty && registrationForm.season.$error.required">Season is required</span>
+        </div>
+        <p>Message: <textarea ng-model="formData.message" placeholder="Enter your message" required></textarea></p>
+        <div class="error" ng-show="contactForm.message.$error.required && contactForm.message.$dirty">
+            <i class="fas fa-exclamation-circle icon"></i> Message is required
+        </div>
+        <button type="submit" ng-disabled="contactForm.$invalid">Submit</button>
+    </form>
+    <div ng-show="showConfirmation" class="confirmation">{{confirmationMessage}}</div>
+</div>
+
+<script>
+    angular.module('contactFormApp', [])
+        .controller('ContactFormController', ['$scope', function($scope) {
+            $scope.formData = {};
+            $scope.showConfirmation = false;
+
+            $scope.submitForm = function() {
+                $scope.showConfirmation = true;
+                $scope.confirmationMessage = "Thank you for your message, " + $scope.formData.name + "! We'll get back to you soon.";
+                $scope.formData = {};
+                $scope.contactForm.$setPristine();
+                $scope.contactForm.$setUntouched();
+            };
+        }]);
+</script>
+
+</body>
+</html>
